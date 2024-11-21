@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Album me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "icon" href="image/Image (2).png">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,h1 {font-family: "Raleway", Arial, sans-serif}
+        h1 {letter-spacing: 6px}
+        .w3-row-padding img {margin-bottom: 2px}
+        
+        /* Flexbox layout for the photo grid */
+        #photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribute space between images */
+        }
+        #photo-grid .w3-quarter {
+            flex: 1 1 23%; /* Allow each image to take up 23% of the container's width */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+        #photo-grid img {
+            width: 100%; /* Ensure all images are of equal width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+    <script>
+        function changeImages(category) {
+            // กำหนดแหล่งที่มาของรูปภาพตามหมวดหมู่
+            const images = {
+                me: [
+                    "image/m9.jpg", "image/m10.jpg", "image/m13.jpg", "image/m14.jpg",
+                    "image/m12.jpg", "image/m6.jpg", "image/m1.jpg", "image/m7.jpg",
+                    "image/m4.jpg", "image/m3.jpg", "image/m8.jpg", "image/n9.jpg"
+                ],
+                family: [
+                    "image/f2.jpg", "image/f4.jpg", "image/f5.jpg", "image/f6.jpg",
+                    "image/f7.jpg", "image/f8.jpg", "image/f9.jpg", "image/f17.jpg",
+                    "image/f3.jpg", "image/f14.jpg", "image/f16.jpg", "image/f11.jpg"
+                ],
+                friend: [
+                    "image/n22.jpg", "image/n23.jpg", "image/n20.jpg", "image/n19.jpg",
+                    "image/n2.jpg", "image/n7.jpg", "image/n12.jpg", "image/n6.jpg",
+                    "image/n4.jpg", "image/n5.jpg", "image/n17.jpg", "image/n18.jpg"
+                ],//ข้อมูล Fovorite
+                sport: [
+                    "image/r8.jpg", "image/r6.jpg", "image/r5.jpg", "image/r7.jpg",
+                    "image/r9.jpg", "image/r25.jpg", "image/r1.jpg", "image/r3.jpg",
+                    "image/r12.jpg", "image/r17.jpg", "image/r24.jpg", "image/r20.jpg",
+                    "image/r2.jpg", "image/r11.jpg", "image/r10.jpg", "image/r23.jpg"
+                ],//ข้อมูลFriend
+                favorite: [
+                   "image/s27.jpg", "image/s28.jpg", "image/s26.jpg", "image/s23.jpg",
+                    "image/s2.jpg", "image/s9.jpg", "image/s8.jpg", "image/s3.jpg",
+                    "image/s1.jpg", "image/s19.jpg", "image/s18.jpg", "image/s17.jpg",
+                    "image/s10.jpg", "image/s25.jpg", "image/s14.jpg", "image/s20.jpg",
+                    "image/s4.jpg", "image/s7.jpg", "image/s6.jpg", "image/s22.jpg"
+                ]//ข้อมูล Sport
+            };
+
+            const photoGrid = document.getElementById("photo-grid");
+            photoGrid.innerHTML = ""; // ลบรูปภาพเก่าออก
+
+            // สร้าง <div> และ <img> ตามภาพในหมวดหมู่ที่เลือก
+            images[category].forEach(src => {
+                const div = document.createElement("div");
+                div.className = "w3-quarter";
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = category + " photo";
+                div.appendChild(img);
+                photoGrid.appendChild(div);
+            });
+        }
+
+        // โหลดหมวดหมู่ "me" เมื่อเปิดหน้าเว็บครั้งแรก
+        window.onload = function() {
+            changeImages('me');
+        };
+    </script>
+</head>
+<body>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <header class="w3-panel w3-center w3-opacity" style="padding:10px 16px">
+        <h1 class="w3-xlarge">𝐏𝐇𝐎𝐓𝐎𝐆𝐑𝐀𝐏𝐇𝐄𝐑</h1>
+        <h1>𝐌𝐨𝐨𝐧𝐧𝐧 ☾</h1>
+        
+        <div class="w3-padding-32">
+            <div class="w3-bar w3-border">
+                <a href="#" class="w3-bar-item w3-button" onclick="changeImages('me')">Me</a>
+                <a href="#" class="w3-bar-item w3-button" onclick="changeImages('family')">Family</a>
+                <a href="#" class="w3-bar-item w3-button" onclick="changeImages('friend')">Favorite</a>
+                <a href="#" class="w3-bar-item w3-button" onclick="changeImages('sport')">Friend</a>
+                <a href="#" class="w3-bar-item w3-button" onclick="changeImages('favorite')">Sport</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Photo Grid -->
+    <div id="photo-grid" class="w3-row-padding w3-grayscale" style="margin-bottom:20px">
+        <!-- รูปภาพจะถูกสร้างที่นี่ -->
+    </div>
+
+    <!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-16  w3-center w3-large"> 
+    <a href="https://www.facebook.com/profile.php?id=100010882360748" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/mmoonnn3?fbclid" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+</footer>
+
+<!-- Footer -->
+<footer class="w3-center w3-white w3-padding-16 w3-opacity w3-hover-opacity-off">
+    <a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+</footer>
+
+</body>
+</html>
